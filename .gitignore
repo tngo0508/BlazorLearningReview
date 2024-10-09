@@ -361,3 +361,80 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# User-specific files
+.idea/
+
+# Rider-specific files
+.idea_modules/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/stashes
+
+# Rider-specific directory for project specific settings
+.idea/.idea_modules/
+.idea/remotes.xml
+
+# Transient Module files for Rider
+.idea/misc.xml
+.idea/modules.xml
+.idea/compiler.xml
+
+# Gradle specific
+.idea/gradle.xml
+.idea/libraries
+
+# Rider 2021.1+
+.idea/asset-links
+
+# Environment option configuration
+.idea/runConfigurations/
+
+# IDE files
+.idea/httpRequests
+.idea/dataSources/
+/.idea_dataSources/*.xml
+.idea_dataSources.local/*
+.idea/dataSources.ids/
+.idea/dataSources.uuid/
+.idea_dataSources.xml
+
+# Add more specific IntelliJ/Rider ignores as needed
+
+# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider settings
+.vs/
+.vscode/
+.idea/
+
+# ASP.NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Auto-generated UI files
+Generated\
+
+# Publish outputs
+publish/
+
+# Windows image file caches
+_thumbdb
+
+# Others
+ehthumbs.db
+Thumbs.db
+
+# Rider stuff
+.idea/
