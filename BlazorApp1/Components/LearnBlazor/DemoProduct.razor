@@ -21,12 +21,12 @@
                 }
                 
                 <br/>
-                <input type="button" class="btn btn-danger" style="width: 100px" value="Delete"/>
+                <input type="button" class="btn btn-danger" style="width: 100px" value="Delete" @onclick="() => ProductList.Remove(prod)"/>
             </div>
         }
     </div>
     <div class="row">
-        <input type="button" class="btn btn-success" style="width: 100px" value="Counter" @onclick="IncrementCount"/>
+        <input type="button" class="btn btn-success" style="width: 100px" value="Counter" @onclick="() => IncrementCount(5)"/>
         <br/>
         Counter: @Count
     </div>
@@ -69,9 +69,9 @@
         });
     }
 
-    private void IncrementCount(MouseEventArgs obj)
+    private void IncrementCount(int i)
     {
-        Count++;
+        Count+= i;
     }
 
 }
