@@ -2,37 +2,18 @@
 @using BlazorApp1.Models
 
 <h2 class="text-primary">DemoProduct</h2>
+<p>Favorite Count: @FavoriteCount</p>
 <div class="p-2 mt-2">
     <div class="row">
         @foreach (var prod in ProductList)
         {
-            <div class="bg-light border m-1 col-5">
-                <h4 class="text-secondary">Product - @prod.Id</h4>
-                Name - @prod.Name
-                Show Properties:
-                <input type="checkbox" @bind="prod.IsActive"/>
-                
-                @if (prod.IsActive)
-                {
-                    @foreach (var prodProp in prod.ProductProperties)
-                    {
-                        <p>@prodProp.Key - @prodProp.Value</p>
-                    }
-                }
-                
-                <br/>
-                <input type="button" class="btn btn-danger" style="width: 100px" value="Delete" @onclick="() => ProductList.Remove(prod)"/>
-            </div>
+            <_IndividualProduct Product="prod" OnFavoriteUpdate="FavoriteCountChange"></_IndividualProduct>
         }
-    </div>
-    <div class="row">
-        <input type="button" class="btn btn-success" style="width: 100px" value="Counter" @onclick="() => IncrementCount(5)"/>
-        <br/>
-        Counter: @Count
     </div>
 </div>
 
 @code {
+    public int FavoriteCount { get; set; } = 0;
     public int Count { get; set; } = 0;
     private string selectedProp = "";
 
@@ -74,4 +55,15 @@
         Count+= i;
     }
 
+    protected void FavoriteCountChange(bool isSelected)
+    {
+        if (isSelected)
+        {
+            FavoriteCount++;
+        }
+        else
+        {
+            FavoriteCount--;
+        }
+    }
 }
