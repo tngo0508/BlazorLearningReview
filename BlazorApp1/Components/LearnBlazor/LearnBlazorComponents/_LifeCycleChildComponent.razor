@@ -1,0 +1,23 @@
+﻿<h3>LifeCycleChildComponent</h3>
+
+@foreach (var item in EventType)
+{
+    <p>@item</p>
+    <hr/>
+}
+
+@code {
+    List<string> EventType = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        EventType.Add("OnInitializedAsync-CHILD is called");
+    }
+
+    protected override void OnInitialized()
+    {
+        EventType.Add("OnInitialized-CHILD is called");
+    }
+
+}
