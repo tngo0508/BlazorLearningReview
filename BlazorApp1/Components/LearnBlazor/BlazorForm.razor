@@ -7,10 +7,16 @@
         <hr>
     </div>
     <div class="mx-2 px-2">
-        <EditForm FormName="ProductCreate" Model="Product" OnSubmit="HandleProductCreate">
+        <EditForm FormName="ProductCreate" Model="Product" OnValidSubmit="HandleProductCreate" OnInvalidSubmit="HandleProductCreateInvalid">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <ValidationSummary></ValidationSummary>
             <div class="form-group py-2">
                 Product Name
                 <InputText class="form-control" @bind-Value="Product.Name"></InputText>
+            </div>
+            <div class="form-group py-2">
+                Price
+                <InputNumber class="form-control" @bind-Value="Product.Price"></InputNumber>
             </div>
             <button class="btn btn-primary my-3" type="submit" style="width: 200px;">Create Product</button>
             <p class="text-success">@(IsProcessing == true ? "Processing..." : "")</p>
@@ -28,5 +34,11 @@
         await Task.Delay(3000);
         IsProcessing = false;
     }
-
+    
+    private async Task HandleProductCreateInvalid()
+    {
+        IsProcessing = true;
+        await Task.Delay(3000);
+        IsProcessing = false;
+    }
 }
