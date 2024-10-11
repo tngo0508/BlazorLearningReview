@@ -34,11 +34,13 @@
 
     private async Task ToastrSuccess(MouseEventArgs arg)
     {
-        await JsRuntime.InvokeVoidAsync("showToastr", "success", "Success Notification");
+        // await JsRuntime.InvokeVoidAsync("showToastr", "success", "Success Notification");
+        await JsRuntime.ToastrSuccess("Success Notification");
     }
 
     private async Task ToastrError(MouseEventArgs arg)
     {
-        await JsRuntime.InvokeVoidAsync("showToastr", "error", "Error Notification");
+        // await JsRuntime.InvokeVoidAsync("showToastr", "error", "Error Notification");
+        await JsRuntime.ToastrError("Error Notification");
     }
 }
