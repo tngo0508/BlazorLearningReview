@@ -1,4 +1,6 @@
-﻿<div>
+﻿@inject IJSRuntime JSRuntime
+
+<div>
     <div class="alert alert-info">
         @Title
     </div>
@@ -22,4 +24,9 @@
     [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public RenderFragment? ChildContentCustomName { get; set; }
     [Parameter] public EventCallback OnButtonClick { get; set; }
+    
+    public async Task ToastrSuccess(MouseEventArgs arg)
+    {
+        await JSRuntime.ToastrSuccess("Success Notification");
+    }
 }

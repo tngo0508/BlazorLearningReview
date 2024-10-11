@@ -6,7 +6,7 @@
 
 <CascadingValue Value="@MessageText" Name="Message">
     <CascadingValue Value="@LuckyNumber" Name="Lucky">
-        <_ChildComponent OnButtonClick="ShowMessage" Title="test">
+        <_ChildComponent @ref="childComp" OnButtonClick="ShowMessage" Title="test">
             <ChildContentCustomName>Some Text between the tags from ParentComponent</ChildContentCustomName>
             <ChildContent>
                 <p>Some text for ChildContent. This is optional to use ChildContent. We do not need to specify ChildContent tag since it's implicitly added by Blazor</p>
@@ -27,7 +27,12 @@
 @*     <ChildContentCustomName>some text name</ChildContentCustomName> *@
 @* </_ChildComponent> *@
 
+<div class="row">
+    <button class="btn btn-success" @onclick="(args) => childComp.ToastrSuccess(args)">Show Swal</button>
+</div>
+
 @code {
+    private _ChildComponent childComp;
     public string MessageText = "This message is passed from ParentComponent to GrandChildComponent";
     private string LuckyNumber = "7";
     private void ShowMessage()
