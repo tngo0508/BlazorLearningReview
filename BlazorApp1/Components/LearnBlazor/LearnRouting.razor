@@ -35,6 +35,7 @@
         var query = QueryHelpers.ParseQuery(uri.Query);
         Param1 = query["Param1"];
         Param2 = query["Param2"];
+        _NavigationManager.Refresh(forceReload:true);
     }
 
     private void NavigateToQueryParameter()
