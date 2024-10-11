@@ -13,10 +13,12 @@
             <div class="form-group py-2">
                 Product Name
                 <InputText class="form-control" @bind-Value="Product.Name"></InputText>
+                <ValidationMessage For="@(() => Product.Name)"></ValidationMessage>
             </div>
             <div class="form-group py-2">
                 Price
                 <InputNumber class="form-control" @bind-Value="Product.Price"></InputNumber>
+                <ValidationMessage For="@(() => Product.Price)"></ValidationMessage>
             </div>
             <button class="btn btn-primary my-3" type="submit" style="width: 200px;">Create Product</button>
             <p class="text-success">@(IsProcessing == true ? "Processing..." : "")</p>
