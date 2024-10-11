@@ -1,14 +1,27 @@
 ﻿@page "/learnBlazor/parentComponent"
 
-<_ChildComponent Title="This title is passed as a parameter from Parent Component">
-    Render Fragment Items passed to child component
+@* <_ChildComponent Title="This title is passed as a parameter from Parent Component"> *@
+@*     Render Fragment Items passed to child component *@
+@* </_ChildComponent> *@
+
+<_ChildComponent OnButtonClick="ShowMessage" Title="test" MessageForGrandChild="This is message passed from ParentComponent">
+    <ChildContentCustomName>Some Text between the tags from ParentComponent</ChildContentCustomName>
+    <ChildContent>
+        <p>Some text for ChildContent. This is optional to use ChildContent. We do not need to specify ChildContent tag since it's implicitly added by Blazor</p>
+        <br>
+        <p class="text-primary">Some other text</p>
+    </ChildContent>
 </_ChildComponent>
 
 <p>@messageText</p>
 
-<_ChildComponent OnButtonClick="ShowMessage" Title="test">
-    something else
-</_ChildComponent>
+@* <_ChildComponent OnButtonClick="ShowMessage" Title="test"> *@
+@*     something else *@
+@* </_ChildComponent> *@
+@* *@
+@* <_ChildComponent Title="test"> *@
+@*     <ChildContentCustomName>some text name</ChildContentCustomName> *@
+@* </_ChildComponent> *@
 
 @code {
     public string messageText = "";

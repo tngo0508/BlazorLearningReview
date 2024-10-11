@@ -5,11 +5,22 @@
     <div class="alert alert-warning">
         @ChildContent
     </div>
+    @if (ChildContentCustomName != null)
+    {
+        <div class="alert alert-success">
+            @ChildContentCustomName
+        </div>
+    }
+    
     
     <button class="btn btn-danger" @onclick="OnButtonClick">Click Me</button>
+    @* <_GrandChildComponent MessageForGrandChild="This message is passed from ChildComponent"></_GrandChildComponent> *@
+    <_GrandChildComponent MessageForGrandChild="@MessageForGrandChild"></_GrandChildComponent>
 </div>
 @code {
     [Parameter] public string? Title { get; set; }
-    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string? MessageForGrandChild { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RenderFragment? ChildContentCustomName { get; set; }
     [Parameter] public EventCallback OnButtonClick { get; set; }
 }
