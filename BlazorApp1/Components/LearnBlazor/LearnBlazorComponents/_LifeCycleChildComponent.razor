@@ -8,16 +8,29 @@
 
 @code {
     List<string> EventType = new List<string>();
+    
+    [Parameter] public int CountValue { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await Task.Delay(500);
-        EventType.Add("OnInitializedAsync-CHILD is called");
-    }
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     await Task.Delay(500);
+    //     EventType.Add("OnInitializedAsync-CHILD is called");
+    // }
 
     protected override void OnInitialized()
     {
         EventType.Add("OnInitialized-CHILD is called");
     }
 
+    protected override void OnParametersSet()
+    {
+        EventType.Add("OnParametersSet-CHILD is called");
+    }
+
+    // protected override async Task OnParametersSetAsync()
+    // {
+    //     await Task.Delay(1500);
+    //     EventType.Add("OnParametersSetAsync-CHILD is called");
+    // }
+    
 }
