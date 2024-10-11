@@ -4,16 +4,20 @@
 @*     Render Fragment Items passed to child component *@
 @* </_ChildComponent> *@
 
-<_ChildComponent OnButtonClick="ShowMessage" Title="test" MessageForGrandChild="This is message passed from ParentComponent">
-    <ChildContentCustomName>Some Text between the tags from ParentComponent</ChildContentCustomName>
-    <ChildContent>
-        <p>Some text for ChildContent. This is optional to use ChildContent. We do not need to specify ChildContent tag since it's implicitly added by Blazor</p>
-        <br>
-        <p class="text-primary">Some other text</p>
-    </ChildContent>
-</_ChildComponent>
+<CascadingValue Value="@MessageText" Name="Message">
+    <CascadingValue Value="@LuckyNumber" Name="Lucky">
+        <_ChildComponent OnButtonClick="ShowMessage" Title="test">
+            <ChildContentCustomName>Some Text between the tags from ParentComponent</ChildContentCustomName>
+            <ChildContent>
+                <p>Some text for ChildContent. This is optional to use ChildContent. We do not need to specify ChildContent tag since it's implicitly added by Blazor</p>
+                <br>
+                <p class="text-primary">Some other text</p>
+            </ChildContent>
+        </_ChildComponent>
+    </CascadingValue>
+</CascadingValue>
 
-<p>@messageText</p>
+@* <p>@MessageText</p> *@
 
 @* <_ChildComponent OnButtonClick="ShowMessage" Title="test"> *@
 @*     something else *@
@@ -24,10 +28,11 @@
 @* </_ChildComponent> *@
 
 @code {
-    public string messageText = "";
-
+    public string MessageText = "This message is passed from ParentComponent to GrandChildComponent";
+    private string LuckyNumber = "7";
     private void ShowMessage()
     {
-        messageText = "Button inside child component was clicked";
+        MessageText = "Button inside child component was clicked";
     }
+
 }
