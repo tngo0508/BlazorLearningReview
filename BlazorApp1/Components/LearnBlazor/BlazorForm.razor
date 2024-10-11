@@ -20,6 +20,23 @@
                 <InputNumber class="form-control" @bind-Value="Product.Price"></InputNumber>
                 <ValidationMessage For="@(() => Product.Price)"></ValidationMessage>
             </div>
+            <div class="form-group py-2">
+                Category
+                <InputSelect class="form-select" @bind-Value="Product.Category">
+                    @foreach (var category in Enum.GetValues(typeof(Category)))
+                    {
+                        <option value="@category">@category</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="form-group py-2">
+                IsActive
+                <InputCheckbox class="form-check" @bind-Value="Product.IsActive"></InputCheckbox>
+            </div>
+            <div class="form-group py-2">
+                Available After
+                <InputDate class="form-control" @bind-Value="Product.AvailableAfter"></InputDate>
+            </div>
             <button class="btn btn-primary my-3" type="submit" style="width: 200px;">Create Product</button>
             <p class="text-success">@(IsProcessing == true ? "Processing..." : "")</p>
         </EditForm>
@@ -27,7 +44,10 @@
 </div>
 
 @code {
-    public Product Product { get; set; } = new Product();
+    public Product Product { get; set; } = new Product
+    {
+        AvailableAfter = DateOnly.FromDateTime(DateTime.Now)
+    };
     private bool IsProcessing = false;
 
     private async Task HandleProductCreate()
