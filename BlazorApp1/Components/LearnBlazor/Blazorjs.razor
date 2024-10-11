@@ -18,6 +18,11 @@
     }
 </div>
 
+<div class="row">
+    <button class="btn btn-success" @onclick="ToastrSuccess">Toastr Success</button>
+    <button class="btn btn-danger" @onclick="ToastrError">Toastr Failure</button>
+</div>
+
 @code {
     private string ConfirmMessage = "Are you sure you want to click here?";
     private bool ConfirmResult { get; set; }
@@ -27,4 +32,13 @@
         ConfirmResult = await JsRuntime.InvokeAsync<bool>("confirm", ConfirmMessage);
     }
 
+    private async Task ToastrSuccess(MouseEventArgs arg)
+    {
+        await JsRuntime.InvokeVoidAsync("showToastr", "success", "Success Notification");
+    }
+
+    private async Task ToastrError(MouseEventArgs arg)
+    {
+        await JsRuntime.InvokeVoidAsync("showToastr", "error", "Error Notification");
+    }
 }
